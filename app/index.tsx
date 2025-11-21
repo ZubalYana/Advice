@@ -8,8 +8,22 @@ import RandomAdvice from "./pages/RandomAdvice";
 import SettingsPage from "./pages/Settings";
 import UserProfile from "./pages/UserProfile";
 
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
+
 export default function Index() {
   const [activeTab, setActiveTab] = useState("advice");
+  const [token, setToken] = useState(null);
+  const [authScreen, setAuthScreen] = useState("login");
+
+  if (!token) {
+    if (authScreen === "login") {
+      return <Login setAuthScreen={setAuthScreen} setToken={setToken} />;
+    }
+    if (authScreen === "signup") {
+      return <SignUp setAuthScreen={setAuthScreen} />;
+    }
+  }
 
   return (
     <View style={styles.container}>

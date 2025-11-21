@@ -33,7 +33,7 @@ export default function CreateAdvice() {
         setLoading(true);
 
         try {
-            const response = await fetch("http://192.168.0.104:5000/advice", {
+            const response = await fetch("http://192.168.0.107:5000/advice", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
