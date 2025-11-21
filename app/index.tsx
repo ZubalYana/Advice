@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { StyleSheet, View } from "react-native";
+import { AuthProvider } from "./context/AuthContext";
 import "./global.css";
 
 import Navigation from "./components/Navigation";
@@ -12,16 +13,18 @@ export default function Index() {
   const [activeTab, setActiveTab] = useState("advice");
 
   return (
-    <View style={styles.container}>
-      <View style={styles.content}>
-        {activeTab === "advice" && <RandomAdvice />}
-        {activeTab === "create" && <CreateAdvice />}
-        {activeTab === "profile" && <UserProfile />}
-        {activeTab === "settings" && <SettingsPage />}
-      </View>
+    <AuthProvider>
+      <View style={styles.container}>
+        <View style={styles.content}>
+          {activeTab === "advice" && <RandomAdvice />}
+          {activeTab === "create" && <CreateAdvice />}
+          {activeTab === "profile" && <UserProfile />}
+          {activeTab === "settings" && <SettingsPage />}
+        </View>
 
-      <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
-    </View>
+        <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
+      </View>
+    </AuthProvider>
   );
 }
 
