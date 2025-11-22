@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Alert, Keyboard, StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native";
-
+import { useAuth } from "../context/AuthContext";
 export default function CreateAdvice() {
     const [title, setTitle] = useState("");
     const [text, setText] = useState("");
     const [type, setType] = useState("");
     const [loading, setLoading] = useState(false);
+    const { token } = useAuth();
 
     const adviceTypes = [
         "Motivation",
@@ -37,7 +38,7 @@ export default function CreateAdvice() {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: "Bearer YOUR_JWT_TOKEN",
+                    Authorization: `Bearer ${token}`,
                 },
                 body: JSON.stringify({ title, text, type }),
             });
