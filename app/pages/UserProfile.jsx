@@ -1,13 +1,11 @@
 import { Button, StyleSheet, Text, View } from "react-native";
 import { useAuth } from "../context/AuthContext";
-import Login from "./Login";
+import AuthScreen from "./AuthScreen";
 
 export default function UserProfile() {
     const { token, logout, loading } = useAuth();
 
-    if (loading) return <Text>Loading...</Text>;
-
-    if (!token) return <Login />;
+    if (!token) return <AuthScreen />;
 
     return (
         <View style={styles.container}>

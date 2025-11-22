@@ -6,7 +6,7 @@ export default function RandomAdvice() {
     const [currentAdvice, setCurrentAdvice] = useState(null);
 
     useEffect(() => {
-        fetch("http://192.168.0.107:5000/advice")
+        fetch("http://192.168.0.106:5000/advice")
             .then((res) => res.json())
             .then((data) => {
                 setAdviceList(data);
